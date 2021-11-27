@@ -1,11 +1,16 @@
 <template>
   <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    <!-- <router-link to="/">Events</router-link> |
+    <router-link to="/about">About</router-link> -->
+    <router-link :to="{ name: 'EventList' }">Events</router-link> |
+    <router-link :to="{ name: 'About' }">About</router-link>
   </div>
   <router-view />
+  <!-- placeholder replaced by route's component -->
 </template>
 
+// below is the global style that can be applied throughout the whole //
+application
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -26,5 +31,9 @@
 
 #nav a.router-link-exact-active {
   color: #42b983;
+}
+
+h4 {
+  font-size: 20px;
 }
 </style>

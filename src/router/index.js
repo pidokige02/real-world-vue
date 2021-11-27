@@ -1,26 +1,32 @@
-import { createRouter, createWebHistory } from "vue-router";
-import Home from "../views/Home.vue";
+import { createRouter, createWebHistory } from 'vue-router'
+import EventList from '../views/EventList.vue'
+import EventDetails from '../views/EventDetails.vue'
+import About from '../views/About.vue'
 
 const routes = [
   {
-    path: "/",
-    name: "Home",
-    component: Home,
+    path: '/', // url
+    name: 'EventList', // name of the route
+    component: EventList, // which "view" component to render
   },
   {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue"),
+    // make EventCard clickable with a router-link
+    path: '/event/:id', // :id is dynamic segment (ex :user, :userid)
+    //path: '/event/123', // harcoaded one to access data w/id = 123.
+    name: 'EventDetails',
+    props: true, // send in route params as component props
+    component: EventDetails,
   },
-];
+  {
+    path: '/about',
+    name: 'About',
+    component: About, // which "view" component to render
+  },
+]
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
-});
+})
 
-export default router;
+export default router
